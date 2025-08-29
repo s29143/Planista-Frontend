@@ -8,7 +8,8 @@
     "confirm": "Confirm",
     "back": "Back",
     "next": "Next",
-    "submit": "Submit"
+    "submit": "Submit",
+    "login": "Login"
   },
   "messages": {
     "loading": "Loading...",

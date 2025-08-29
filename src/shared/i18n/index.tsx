@@ -3,7 +3,6 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import resourcesToBackend from "i18next-resources-to-backend";
 
-// lista języków, fallbacks
 export const supportedLngs = ["pl", "en"] as const;
 export const fallbackLng = "pl";
 
@@ -12,9 +11,11 @@ i18n
   .use(
     resourcesToBackend((lng: string, ns: string) => {
       if (ns === "common") {
-        return import(`@/shared/locales/${lng}/${ns}.json`);
+        return import(/* @vite-ignore */ `@/shared/locales/${lng}/${ns}.json`);
       }
-      return import(`@/features/${ns}/locales/${lng}/${ns}.json`);
+      return import(
+        /* @vite-ignore */ `@/features/${ns}/locales/${lng}/${ns}.json`
+      );
     })
   )
   .use(initReactI18next)

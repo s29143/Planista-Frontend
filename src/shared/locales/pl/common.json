@@ -8,7 +8,8 @@
     "confirm": "Potwierdź",
     "back": "Wstecz",
     "next": "Dalej",
-    "submit": "Wyślij"
+    "submit": "Wyślij",
+    "login": "Zaloguj"
   },
   "messages": {
     "loading": "Ładowanie...",
