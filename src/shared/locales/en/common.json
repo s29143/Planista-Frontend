@@ -1,0 +1,38 @@
+{
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "login": "Login",
+    "logout": "Log out"
+  },
+  "messages": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Not found",
+    "success": "Operation completed successfully",
+    "unauthorized": "Unauthorized"
+  },
+  "validation": {
+    "required": "Field is required",
+    "invalidEmail": "Invalid email address",
+    "minLength": "Value is too short",
+    "maxLength": "Value is too long"
+  },
+  "layout": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Log out"
+  }, 
+    "pages": {
+    "signin": "Sign in"
+  }
+}

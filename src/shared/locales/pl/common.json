@@ -1,0 +1,38 @@
+{
+  "actions": {
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "close": "Zamknij",
+    "confirm": "Potwierdź",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "submit": "Wyślij",
+    "login": "Zaloguj",
+    "logout": "Wyloguj"
+  },
+  "messages": {
+    "loading": "Ładowanie...",
+    "error": "Wystąpił błąd",
+    "notFound": "Nie znaleziono",
+    "success": "Operacja zakończona pomyślnie",
+    "unauthorized": "Brak uprawnień"
+  },
+  "validation": {
+    "required": "Pole wymagane",
+    "invalidEmail": "Nieprawidłowy adres e-mail",
+    "minLength": "Za krótka wartość",
+    "maxLength": "Za długa wartość"
+  },
+  "layout": {
+    "home": "Strona główna",
+    "dashboard": "Panel",
+    "profile": "Profil",
+    "settings": "Ustawienia",
+    "logout": "Wyloguj"
+  },
+  "pages": {
+    "signin": "Logowanie"
+  }
+}
