@@ -11,10 +11,12 @@ i18n
   .use(
     resourcesToBackend((lng: string, ns: string) => {
       if (ns === "common") {
-        return import(/* @vite-ignore */ `@/shared/locales/${lng}/${ns}.json`);
+        return import(
+          /* @vite-ignore */ `/src/shared/locales/${lng}/${ns}.json`
+        );
       }
       return import(
-        /* @vite-ignore */ `@/features/${ns}/locales/${lng}/${ns}.json`
+        /* @vite-ignore */ `/src/features/${ns}/locales/${lng}/${ns}.json`
       );
     })
   )
@@ -31,6 +33,9 @@ i18n
     },
     interpolation: { escapeValue: false },
     react: { useSuspense: true },
+    load: "languageOnly",
+    nonExplicitSupportedLngs: true,
+    debug: import.meta.env.DEV,
   });
 
 export default i18n;

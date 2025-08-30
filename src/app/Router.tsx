@@ -1,20 +1,29 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { Loader } from "@mantine/core";
-import { Page } from "@/shared/ui/layout/Page";
 import { ProtectedRoute } from "@/features/auth/ProtectedRoute";
+import MainLayout from "@/shared/ui/layout/MainLayout";
 
 const AuthModule = lazy(() => import("@/features/auth"));
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <ProtectedRoute>
-        <Page title="Home">
-          <div>Witaj w aplikacji</div>
-        </Page>
+        <MainLayout />
       </ProtectedRoute>
     ),
+    children: [
+      {
+        index: true,
+        element: <div>Strona główna - dostęp tylko dla zalogowanych</div>,
+      },
+      {
+        path: "*",
+        element: <div>Strona nie istnieje</div>,
+      },
+    ],
   },
   {
     path: "/login",
@@ -26,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Page title="404">Strona nie istnieje</Page>,
+    element: <div>Strona nie istnieje</div>,
   },
 ]);
 

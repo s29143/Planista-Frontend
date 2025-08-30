@@ -9,7 +9,8 @@
     "back": "Wstecz",
     "next": "Dalej",
     "submit": "Wyślij",
-    "login": "Zaloguj"
+    "login": "Zaloguj",
+    "logout": "Wyloguj"
   },
   "messages": {
     "loading": "Ładowanie...",
@@ -30,5 +31,8 @@
     "profile": "Profil",
     "settings": "Ustawienia",
     "logout": "Wyloguj"
+  },
+  "pages": {
+    "signin": "Logowanie"
   }
 }
