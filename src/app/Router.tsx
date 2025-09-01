@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { Loader } from "@mantine/core";
 import { ProtectedRoute } from "@/features/auth/ProtectedRoute";
 import MainLayout from "@/shared/ui/layout/MainLayout";
+import LoginLayout from "@/shared/ui/layout/LoginLayout";
 
 const AuthModule = lazy(() => import("@/features/auth"));
 
@@ -29,9 +30,15 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
       <Suspense fallback={<Loader />}>
-        <AuthModule />
+        <LoginLayout />
       </Suspense>
     ),
+    children: [
+      {
+        index: true,
+        element: <AuthModule />,
+      },
+    ],
   },
   {
     path: "*",
