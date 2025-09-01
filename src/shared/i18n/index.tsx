@@ -6,6 +6,11 @@ import resourcesToBackend from "i18next-resources-to-backend";
 export const supportedLngs = ["pl", "en"] as const;
 export const fallbackLng = "pl";
 
+const defaultVariables = {
+  pl: { field: "Pole", name: "Nazwa" },
+  en: { field: "Field", name: "Name" },
+};
+
 i18n
   .use(LanguageDetector)
   .use(
@@ -31,11 +36,22 @@ i18n
       lookupQuerystring: "lng",
       caches: ["localStorage"],
     },
-    interpolation: { escapeValue: false },
+    interpolation: {
+      escapeValue: true,
+      defaultVariables: defaultVariables[fallbackLng],
+    },
     react: { useSuspense: true },
     load: "languageOnly",
     nonExplicitSupportedLngs: true,
     debug: import.meta.env.DEV,
   });
+i18n.on("languageChanged", (lng) => {
+  const dv = defaultVariables[lng as keyof typeof defaultVariables] ?? {};
+  i18n.options.interpolation = {
+    ...(i18n.options.interpolation || {}),
+    defaultVariables: dv,
+  };
+  i18n.services.interpolator.init(i18n.options.interpolation, true);
+});
 
 export default i18n;

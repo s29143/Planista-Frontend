@@ -20,10 +20,10 @@
     "unauthorized": "Unauthorized"
   },
   "validation": {
-    "required": "Field is required",
+    "required": "{{field}} is required",
     "invalidEmail": "Invalid email address",
-    "minLength": "Value is too short",
-    "maxLength": "Value is too long"
+    "minLength": "{{field}} is too short",
+    "maxLength": "{{field}} is too long"
   },
   "layout": {
     "home": "Home",

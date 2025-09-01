@@ -9,6 +9,7 @@ import {
   Stack,
   Title,
   Group,
+  Center,
 } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { useLogin } from "../api/queries";
@@ -20,8 +21,16 @@ export default function LoginPage() {
   const { t } = useTranslation("common");
   const { t: tAuth } = useTranslation("auth");
   const schema = z.object({
-    username: z.string().nonempty(),
-    password: z.string().nonempty(),
+    username: z.string().nonempty({
+      message: t("validation.required", "Username is required", {
+        field: tAuth("fields.username", "Username"),
+      }),
+    }),
+    password: z.string().nonempty({
+      message: t("validation.required", "Password is required", {
+        field: tAuth("fields.password", "Password"),
+      }),
+    }),
   });
   type FormData = z.infer<typeof schema>;
   const { user } = useAuthStore();
@@ -51,29 +60,31 @@ export default function LoginPage() {
   if (user) return <Navigate to={from} replace />;
 
   return (
-    <Paper maw={420} mx="auto" p="lg" withBorder>
-      <Title order={3} mb="md">
-        Logowanie
-      </Title>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack>
-          <TextInput
-            label={tAuth("fields.username", "Username")}
-            {...register("username")}
-            error={errors.username?.message}
-          />
-          <PasswordInput
-            label={tAuth("fields.password", "Password")}
-            {...register("password")}
-            error={errors.password?.message}
-          />
-          <Group justify="space-between">
-            <Button type="submit" loading={isSubmitting}>
-              {t("actions.login", "Login")}
-            </Button>
-          </Group>
-        </Stack>
-      </form>
-    </Paper>
+    <Center h={"100vh"}>
+      <Paper maw={420} mx="auto" p="lg" withBorder w={"100%"}>
+        <Title order={3} mb="md">
+          {t("pages.signin", "Login")}
+        </Title>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack gap={20}>
+            <TextInput
+              label={tAuth("fields.username", "Username")}
+              {...register("username")}
+              error={errors.username?.message}
+            />
+            <PasswordInput
+              label={tAuth("fields.password", "Password")}
+              {...register("password")}
+              error={errors.password?.message}
+            />
+            <Group justify="space-between">
+              <Button type="submit" loading={isSubmitting}>
+                {t("actions.login", "Login")}
+              </Button>
+            </Group>
+          </Stack>
+        </form>
+      </Paper>
+    </Center>
   );
 }

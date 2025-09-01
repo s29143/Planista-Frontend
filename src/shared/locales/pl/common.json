@@ -20,10 +20,10 @@
     "unauthorized": "Brak uprawnień"
   },
   "validation": {
-    "required": "Pole wymagane",
+    "required": "{{field}} jest wymagane",
     "invalidEmail": "Nieprawidłowy adres e-mail",
-    "minLength": "Za krótka wartość",
-    "maxLength": "Za długa wartość"
+    "minLength": "{{field}} ma krótką wartość",
+    "maxLength": "{{field}} ma długą wartość"
   },
   "layout": {
     "home": "Strona główna",
