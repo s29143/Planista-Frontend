@@ -16,12 +16,14 @@ i18n
   .use(
     resourcesToBackend((lng: string, ns: string) => {
       if (ns === "common") {
-        return import(
-          /* @vite-ignore */ `/src/shared/locales/${lng}/${ns}.json`
+        return import.meta.glob(
+          `/src/shared/locales/${lng}/${ns}.json`,
+           { eager: false }
         );
       }
-      return import(
-        /* @vite-ignore */ `/src/features/${ns}/locales/${lng}/${ns}.json`
+      return import.meta.glob(
+        `/src/features/${ns}/locales/${lng}/${ns}.json`,
+         { eager: false }
       );
     })
   )
