@@ -1,8 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import resourcesToBackend from "i18next-resources-to-backend";
-
+import HttpBackend from "i18next-http-backend";
 export const supportedLngs = ["pl", "en"] as const;
 export const fallbackLng = "pl";
 
@@ -13,21 +12,8 @@ const defaultVariables = {
 
 i18n
   .use(LanguageDetector)
-  .use(
-    resourcesToBackend((lng: string, ns: string) => {
-      if (ns === "common") {
-        return import.meta.glob(
-          `/src/shared/locales/${lng}/${ns}.json`,
-           { eager: false }
-        );
-      }
-      return import.meta.glob(
-        `/src/features/${ns}/locales/${lng}/${ns}.json`,
-         { eager: false }
-      );
-    })
-  )
   .use(initReactI18next)
+  .use(HttpBackend)
   .init({
     fallbackLng,
     supportedLngs: Array.from(supportedLngs),
@@ -41,6 +27,9 @@ i18n
     interpolation: {
       escapeValue: true,
       defaultVariables: defaultVariables[fallbackLng],
+    },
+    backend: {
+      loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
     react: { useSuspense: true },
     load: "languageOnly",
