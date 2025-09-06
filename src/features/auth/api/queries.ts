@@ -31,17 +31,14 @@ export function useLogin() {
     mutationFn: async (payload: z.infer<typeof LoginDto>) => {
       const dto = LoginDto.parse(payload);
 
-      // 1) logowanie -> tylko token
       const r1 = await http.post("/auth/login", dto, {
         withCredentials: true,
         headers: { "X-Client": "WEB" },
       });
       const { accessToken } = LoginResponse.parse(r1.data);
 
-      // (opcjonalnie) jeśli API nie opiera się wyłącznie na HttpOnly cookie:
       useAuthStore.getState().setSession(null, accessToken);
 
-      // 2) dociągamy /auth/me
       const r2 = await http.get("/auth/me", { withCredentials: true });
       const user = MeResponse.parse(r2.data);
 
@@ -53,7 +50,6 @@ export function useLogin() {
       qc.setQueryData(["auth", "session"], { user, accessToken });
     },
     onError: () => {
-      // wyczyść ewentualny nagłówek po nieudanym logowaniu
       useAuthStore.getState().clearSession();
     },
   });

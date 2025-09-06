@@ -53,6 +53,7 @@ export default function LoginPage() {
       navigate(from, { replace: true });
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : "Błąd logowania";
+      console.log("Login error:", e);
       notifications.show({ message, color: "red" });
     }
   };
