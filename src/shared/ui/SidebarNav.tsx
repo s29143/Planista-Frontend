@@ -90,7 +90,6 @@ export function SidebarNav() {
             active={isActivePath(pathname, "/")}
           />
 
-          {/* Firmy */}
           <NavLink
             label={t("pages.companies", "Companies")}
             component={Link}
@@ -128,7 +127,6 @@ export function SidebarNav() {
         </Stack>
       </ScrollArea>
 
-      {/* Sekcja pomocy / stopka */}
       <Group justify="space-between" gap="xs">
         <Text size="xs" c="dimmed">
           v1.0

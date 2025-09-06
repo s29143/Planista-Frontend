@@ -26,7 +26,7 @@ export function LanguageSwitcher() {
     if (lng === current) return;
     startTransition(async () => {
       await i18n.changeLanguage(lng);
-      document.documentElement.lang = lng; // a11y + SEO
+      document.documentElement.lang = lng;
       localStorage.setItem("lng", lng);
     });
   };
