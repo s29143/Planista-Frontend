@@ -11,11 +11,11 @@ import {
   Group,
   Center,
 } from "@mantine/core";
-import { notifications } from "@mantine/notifications";
 import { useLogin } from "../api/queries";
 import { useAuthStore } from "../model/store";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 export default function LoginPage() {
   const { t } = useTranslation("common");
@@ -42,26 +42,40 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    setError,
+    clearErrors,
+    setFocus,
   } = useRHF<FormData>({ resolver: zodResolver(schema), mode: "onBlur" });
 
   const login = useLogin();
 
   const onSubmit = async (data: FormData) => {
     try {
+      clearErrors();
       const session = await login.mutateAsync(data);
       useAuthStore.getState().setSession(session.user, session.accessToken);
       navigate(from, { replace: true });
     } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : "Błąd logowania";
-      console.log("Login error:", e);
-      notifications.show({ message, color: "red" });
+      let message = tAuth("errors.loginFailed", "Login failed");
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 401) {
+          message = tAuth(
+            "errors.invalidCredentials",
+            "Invalid username or password"
+          );
+        }
+        message = e.response?.data?.message ?? message;
+      }
+      setError("root", { type: "server", message });
+      setError("password", { type: "server", message });
+      setFocus("password");
     }
   };
 
   if (user) return <Navigate to={from} replace />;
 
   return (
-    <Center h={"100vh"}>
+    <Center h={"calc(100svh - 56px)"} px="sm">
       <Paper maw={420} mx="auto" p="lg" withBorder w={"100%"}>
         <Title order={3} mb="md">
           {t("pages.signin", "Login")}
