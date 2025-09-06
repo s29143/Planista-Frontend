@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { LanguageSwitcher } from "../LanguageSwitcher";
 import { ColorSchemeToggle } from "../ColorSchemeToggle";
 import { LogoutButton } from "@/features/auth/ui/LogoutButton";
+import { SidebarNav } from "../SidebarNav";
 
 export default function MainLayout() {
   return (
@@ -19,7 +20,9 @@ export default function MainLayout() {
         </Group>
       </AppShell.Header>
 
-      <AppShell.Navbar p="md"></AppShell.Navbar>
+      <AppShell.Navbar p="md">
+        <SidebarNav />
+      </AppShell.Navbar>
 
       <AppShell.Main>
         <Outlet />

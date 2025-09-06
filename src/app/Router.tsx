@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { Loader } from "@mantine/core";
+import { Center, Loader } from "@mantine/core";
 import { ProtectedRoute } from "@/features/auth/ProtectedRoute";
 import MainLayout from "@/shared/ui/layout/MainLayout";
 import LoginLayout from "@/shared/ui/layout/LoginLayout";
@@ -11,9 +11,17 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ProtectedRoute>
-        <MainLayout />
-      </ProtectedRoute>
+      <Suspense
+        fallback={
+          <Center mih={200}>
+            <Loader />
+          </Center>
+        }
+      >
+        <ProtectedRoute>
+          <MainLayout />
+        </ProtectedRoute>
+      </Suspense>
     ),
     children: [
       {
@@ -29,7 +37,13 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: (
-      <Suspense fallback={<Loader />}>
+      <Suspense
+        fallback={
+          <Center mih={200}>
+            <Loader />
+          </Center>
+        }
+      >
         <LoginLayout />
       </Suspense>
     ),

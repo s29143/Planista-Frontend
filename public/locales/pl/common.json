@@ -14,25 +14,34 @@
   },
   "messages": {
     "loading": "Ładowanie...",
-    "error": "Wystąpił błąd",
+    "error": "Wystąpił nieoczekiwany błąd",
     "notFound": "Nie znaleziono",
     "success": "Operacja zakończona pomyślnie",
-    "unauthorized": "Brak uprawnień"
+    "unauthorized": "Brak uprawnień",
+    "noData": "Brak danych do wyświetlenia"
   },
   "validation": {
     "required": "{{field}} jest wymagane",
     "invalidEmail": "Nieprawidłowy adres e-mail",
-    "minLength": "{{field}} ma krótką wartość",
-    "maxLength": "{{field}} ma długą wartość"
+    "minLength": "{{field}} jest za krótkie",
+    "maxLength": "{{field}} jest za długie"
   },
   "layout": {
     "home": "Strona główna",
-    "dashboard": "Panel",
     "profile": "Profil",
     "settings": "Ustawienia",
     "logout": "Wyloguj"
   },
   "pages": {
+    "dashboard": "Dashboard",
+    "companies": "Firmy",
+    "contacts": "Kontakty",
+    "actions": "Działania",
+    "calendar": "Kalendarz",
+    "settings": "Ustawienia",
+    "users": "Użytkownicy",
+    "roles": "Role",
+    "permissions": "Uprawnienia",
     "signin": "Logowanie"
   }
 }

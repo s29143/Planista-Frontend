@@ -17,7 +17,9 @@
     "error": "An error occurred",
     "notFound": "Not found",
     "success": "Operation completed successfully",
-    "unauthorized": "Unauthorized"
+    "unauthorized": "Unauthorized",
+    "noData": "Brak danych do wyświetlenia"
+
   },
   "validation": {
     "required": "{{field}} is required",
@@ -27,12 +29,20 @@
   },
   "layout": {
     "home": "Home",
-    "dashboard": "Dashboard",
     "profile": "Profile",
     "settings": "Settings",
     "logout": "Log out"
   }, 
-    "pages": {
+  "pages": {
+    "dashboard": "Dashboard",
+    "companies": "Companies",
+    "contacts": "Contacts",
+    "actions": "Actions",
+    "calendar": "Calendar",
+    "settings": "Settings",
+    "users": "Users",
+    "roles": "Roles",
+    "permissions": "Permissions",
     "signin": "Sign in"
   }
 }
